@@ -3,95 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My App - Q2 Version 2</title>
+    <title>My App - Version 3</title>
 
     <style>
         body {
             margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #ffffff;
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
         }
 
-        header {
-            text-align: center;
-            padding: 25px;
-            background: rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        header p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: #cfd8dc;
-        }
-
-        main {
+        .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 70vh;
+            height: 100vh;
         }
 
         .card {
-            background: rgba(255,255,255,0.1);
+            background: white;
             padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 420px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
         }
 
-        .card h2 {
-            margin-bottom: 10px;
+        h2 {
+            margin-bottom: 20px;
         }
 
-        .version-tag {
-            display: inline-block;
-            background: #00e676;
-            color: #003300;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-bottom: 15px;
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
         button {
-            margin-top: 15px;
-            padding: 12px 20px;
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
             border: none;
-            border-radius: 25px;
-            background: #ff9800;
+            background: #4CAF50;
             color: white;
-            font-size: 14px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: 0.3s;
         }
 
         button:hover {
-            background: #fb8c00;
-            transform: scale(1.05);
+            background: #45a049;
         }
 
-        #message {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #b2ff59;
+        .hidden {
+            display: none;
         }
 
-        footer {
+        .header {
+            background: #3f51b5;
+            color: white;
+            padding: 15px;
             text-align: center;
-            padding: 12px;
-            background: rgba(0,0,0,0.4);
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        }
+
+        .dashboard {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logout {
+            background: #e53935;
+        }
+
+        .logout:hover {
+            background: #c62828;
+        }
+
+        #error {
+            color: red;
             font-size: 13px;
         }
     </style>
@@ -99,30 +88,58 @@
 
 <body>
 
-<header>
-    <h1>My App</h1>
-    <p>Q2 - Version 2</p>
-</header>
-
-<main>
+<!-- Login Screen -->
+<div id="loginPage" class="container">
     <div class="card">
-        <div class="version-tag">v2</div>
-        <h2>Dashboard</h2>
-        <p>This is your upgraded Version 2 interface.</p>
-
-        <button onclick="showMessage()">Check Version</button>
-        <p id="message"></p>
+        <h2>Login (v3)</h2>
+        <input type="text" id="username" placeholder="Enter username">
+        <input type="password" id="password" placeholder="Enter password">
+        <button onclick="login()">Login</button>
+        <p id="error"></p>
     </div>
-</main>
+</div>
 
-<footer>
-    <p>© 2026 My App | Q2 Release v2</p>
-</footer>
+<!-- Dashboard -->
+<div id="dashboardPage" class="hidden">
+    <div class="header">
+        <h1>My App - Version 3</h1>
+    </div>
+
+    <div class="dashboard">
+        <h2>Welcome to Dashboard</h2>
+        <p id="welcomeUser"></p>
+
+        <button onclick="showFeature()">Run Feature</button>
+        <p id="featureMsg"></p>
+
+        <br><br>
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
+</div>
 
 <script>
-    function showMessage() {
-        document.getElementById("message").innerText =
-        "You are running Q2 Version 2 successfully!";
+    function login() {
+        let user = document.getElementById("username").value;
+        let pass = document.getElementById("password").value;
+
+        if (user === "admin" && pass === "1234") {
+            document.getElementById("loginPage").classList.add("hidden");
+            document.getElementById("dashboardPage").classList.remove("hidden");
+            document.getElementById("welcomeUser").innerText = "Hello, " + user;
+        } else {
+            document.getElementById("error").innerText = "Invalid credentials";
+        }
+    }
+
+    function logout() {
+        document.getElementById("dashboardPage").classList.add("hidden");
+        document.getElementById("loginPage").classList.remove("hidden");
+        document.getElementById("featureMsg").innerText = "";
+    }
+
+    function showFeature() {
+        document.getElementById("featureMsg").innerText =
+        "Feature executed successfully in Version 3!";
     }
 </script>
 
