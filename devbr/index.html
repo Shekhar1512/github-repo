@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App - Version 6</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>My App</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Welcome to Version 6</h2>
+    <p>Complete website with structured design</p>
+    <button onclick="showMsg()">Get Started</button>
+    <p id="msg"></p>
+</section>
+
+<section id="features" class="features">
+    <h2>Features</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Fast</h3>
+            <p>Optimized performance</p>
+        </div>
+
+        <div class="card">
+            <h3>Modern</h3>
+            <p>Clean UI design</p>
+        </div>
+
+        <div class="card">
+            <h3>Scalable</h3>
+            <p>Ready for future growth</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <h2>About</h2>
+    <p>This is Version 6 of your app with better structure and design.</p>
+</section>
+
+<section id="contact" class="contact">
+    <h2>Contact</h2>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea placeholder="Message"></textarea><br>
+    <button onclick="sendMsg()">Send</button>
+    <p id="contactMsg"></p>
+</section>
+
+<footer>
+    <p>© 2026 My App | Version 6</p>
+</footer>
+
+<script>
+function showMsg() {
+    document.getElementById("msg").innerText =
+    "Welcome to Version 6!";
+}
+
+function sendMsg() {
+    document.getElementById("contactMsg").innerText =
+    "Message sent successfully!";
+}
+</script>
+
+</body>
+</html>
